@@ -54,7 +54,7 @@ layout: default
 
           <!-- Selected papers -->
           {% if page.selected_papers -%}
-            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
+            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">papers</a></h2>
             {%- include selected_papers.html %}
           {%- endif %}
 
@@ -72,5 +72,15 @@ layout: default
             </div>
           {%- endif %}
         </article>
+
+        <!-- Resume -->
+        {% if page.cv_pdf %}
+        <object data="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" type="application/pdf" width="700px" height="700px">
+          <embed src="resume.pdf">
+              <p>This browser does not support PDFs. Please download the PDF to view it: <a href="resume.pdf">Download PDF</a>.</p>
+          </embed>
+        </object>
+        <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" target="_blank" rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>
+      {% endif %}
 
 </div>

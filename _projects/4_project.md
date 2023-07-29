@@ -1,12 +1,12 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
-category: fun
+title: Photometric Reconstruction during Endoscopy
+description: Open sourced implementation of paper on photometric 3D reconstruction of the colon.
+redirect: https://github.com/ishanchadha01/Photometric-Reconstruction-Endoscopy/tree/main
+img: assets/img/colonoscopy.png
+importance: 1
 ---
-
+<!-- 
 Every project has a beautiful feature showcase page.
 It's easy to include images in a flexible 3-column grid format.
 Make your photos 1/3, 2/3, or full width.
@@ -76,5 +76,4 @@ Here's the code for the last row of images above:
   </div>
 </div>
 ```
-
-{% endraw %}
+{% endraw %} -->

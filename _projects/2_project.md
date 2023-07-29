@@ -1,13 +1,14 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image and giscus comments
-img: assets/img/3.jpg
+title: Glove-Controlled Robotic Arm
+description: 3D-printed robotic hand with built-in motor-encasing controlled by a glove with flex sensors and bluetooth, as well as control using EEG waves from user looking at different frequencies of LEDs. 
+redirect: https://github.com/ishanchadha01/BCI-robotic-arm
+img: assets/img/robotic-hand.png
 importance: 2
-category: work
-giscus_comments: true
+# category: work
+# giscus_comments: true
 ---
-
+<!-- 
 Every project has a beautiful feature showcase page.
 It's easy to include images in a flexible 3-column grid format.
 Make your photos 1/3, 2/3, or full width.
@@ -77,5 +78,4 @@ Here's the code for the last row of images above:
   </div>
 </div>
 ```
-
-{% endraw %}
+{% endraw %} -->
