@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href='https://sites.google.com/view/bm2lab'>Georgia Institute of Technology - Biomedical Mechatronics Lab</a>. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
