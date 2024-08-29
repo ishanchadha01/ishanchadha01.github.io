@@ -15,8 +15,8 @@ latest_posts: true # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 ---
 
-I'm currently a Master's student at Georgia Tech with a specialization in Robotics and Perception. I am also an aspiring robotics engineer!
+I'm currently a Robotics Engineer at Relativity Space, where I work on automating the construction of rockets via additive manufacturing.
 
-I'm super passionate how machines can be made intelligent and how they sense and interact with the world around them. I'm currently working on my Master's thesis, which involves using 2D endoscopic images to form an understanding of the colon and develop control algorithms for surgical robots based on analysis of these images.
+I'm very passionate how machines can be made intelligent and how they sense and interact with the world around them. I just finished my Master's thesis, which involves using 2D endoscopic images to construct a 3D model of the colon in real-time, despite the textureless nature of such an environment.
 
-I also just finished my second internship at Relativity Space (they 3D print rockets?!). I worked on the robotics software team, integrating sensors and developing control algorithms compatible with the real-time operating system that interfaces with the robot that does the 3D printing.
+I'm trying to use this website as my writing/notes outlet. Let's see how it goes!
