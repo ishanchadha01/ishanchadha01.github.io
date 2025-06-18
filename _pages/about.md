@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://sites.google.com/view/bm2lab'>Georgia Institute of Technology - Biomedical Mechatronics Lab</a>.
+subtitle: Hi.
 
 profile:
   align: right
@@ -12,11 +12,11 @@ profile:
 cv_pdf: resume.pdf
 news: false # includes a list of news items, maybe enable later?
 latest_posts: true # includes a list of the newest posts
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # includes a list of papers marked as "selected={true}"
 ---
 
-I'm currently a Robotics Engineer at Relativity Space, where I work on automating the construction of rockets via additive manufacturing.
+I created this website as a writing/notes outlet - let's see how that goes! Right now, I'm a Robotics Engineer at Relativity Space, where I work on everything from low-level embedded systems and real-time operating systems to high-level implicit neural models of large metal parts, and everything in-between that broadly falls into the domain of robotics. 
 
-I'm very passionate how machines can be made intelligent and how they sense and interact with the world around them. I just finished my Master's thesis, which involves using 2D endoscopic images to construct a 3D model of the colon in real-time, despite the textureless nature of such an environment.
+I'm very passionate how machines can be made intelligent and how they sense and interact with the world around them. Last year, I finished my Master's thesis on 3D modeling of the colon in real-time with 2d endoscope images, despite the textureless nature of such an environment.
 
-I'm trying to use this website as my writing/notes outlet. Let's see how it goes!
+I hope my notes/posts can be of use/interesting to you! You can reach out to me at ishanchadha01@gmail.com with any questions or comments.

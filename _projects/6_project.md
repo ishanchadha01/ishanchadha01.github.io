@@ -1,7 +1,8 @@
 ---
 layout: page
 title: Automatic Differentiation Engine
-description: Work in Progress!
+description: Simple automatic differentiation engine in C++.
+redirect: https://github.com/ishanchadha01/AutoDiff
 img:
 importance: 1
 ---
