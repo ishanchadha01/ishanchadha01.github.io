@@ -15,7 +15,7 @@ latest_posts: true # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
 ---
 
-I created this website as a writing/notes outlet - let's see how that goes! Right now, I'm a Robotics Engineer at Relativity Space, where I work on everything from low-level embedded systems and real-time operating systems to high-level implicit neural models of large metal parts, and everything in-between that broadly falls into the domain of robotics. 
+I created this website as a writing/notes outlet - let's see how that goes! Right now, I'm a Robotics Engineer at Relativity Space, where I work on everything from low-level embedded systems and real-time operating systems to high-level implicit neural models of large metal parts, and everything in-between that broadly falls into the domain of robotics.
 
 I'm very passionate how machines can be made intelligent and how they sense and interact with the world around them. Last year, I finished my Master's thesis on 3D modeling of the colon in real-time with 2d endoscope images, despite the textureless nature of such an environment.
 
