@@ -35,8 +35,8 @@ There are two fairly important questions that I haven't answered:
 
 Heads up, I'm going to get pretty technical in this explanation. My claim here is essentially 3D reconstruction used to be pretty slow and expensive (NeRFs), became fast and accessible (3DGS), but is once again inaccessible due to training dynamics.
 
-<details class="technical-details" markdown="1">
-<summary>Technical details: NeRFs and 3D Gaussian Splatting</summary>
+<div class="technical-details">
+{% details Technical details: NeRFs and 3D Gaussian Splatting %}
 
 In 2023, I was halfway through my Master's thesis on 3D reconstruction in medical settings, and a single paper completely changed its course: [3D Gaussian Splatting for Real-Time Radiance Field Rendering](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/). This paper enabled *significantly* faster and more accurate 3D reconstruction, but for large scenes with many dynamic actors, but high fidelity reconstructions of large scenes with many dynamic components remained slow. Regardless, numerous companies and products spun out of this, such as World Labs and Google Deepmind's Genie 3.
 
@@ -70,7 +70,8 @@ Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matr
 
 [**MCMC**](https://arxiv.org/abs/2404.09591) - Gaussians are modeled as a random sample drawn from the scene's underlying "probability distribution", which gets rid of the carefully engineered Gaussian pruning/splitting that needed to occur to move Gaussians around in the scene when areas were too sparsely/densely modeled.
 
-</details>
+{% enddetails %}
+</div>
 
 ## scaling laws = we lose control
 

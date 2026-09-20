@@ -1348,5 +1348,5 @@ ninja-keys::part(ninja-input-wrapper) {
     font-weight: 500;
     color: var(--global-theme-color);
   }
-  &[open] > summary { margin-bottom: 1.25rem; }
+  details[open] > summary { margin-bottom: 1.25rem; }
 }
