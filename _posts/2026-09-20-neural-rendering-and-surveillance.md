@@ -47,7 +47,7 @@ But then 3D Gaussian Splatting came to be; instead of trying to capture data for
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-2.png" class="img-fluid" caption="<em>we're basically modeling the scene as a jar of jelly beans ngl</em>" %}
 </div>
 
-Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matrix R, a scaling along each axis $$s_x, s_y, s_z$$ , and spherical harmonics [] which encode how the color changes with respect to viewing direction. Although 3DGS has to store a bunch of information for each building block in the scene, actually projecting this from 3D to 2D is a very quick process with some GPU chicanery, which sped up 3D reconstruction to unprecedented levels.
+Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matrix R, a scaling along each axis $$s_x, s_y, s_z$$ , and spherical harmonics <a id="ref-12" href="#note-12" style="scroll-margin-top: 6rem;">[12]</a> which encode how the color changes with respect to viewing direction. Although 3DGS has to store a bunch of information for each building block in the scene, actually projecting this from 3D to 2D is a very quick process with some GPU chicanery, which sped up 3D reconstruction to unprecedented levels.
 
 <div class="blog-figure">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-3.png" class="img-fluid" caption="<em>Data from the linked original 3DGS paper</em>" %}
@@ -70,11 +70,11 @@ With foundation models, scaling laws govern. Those who hold massive data and com
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-4.png" class="img-fluid" caption=neural_rendering_caption %}
 </div>
 
-I'll be real - I've long thought that as LLMs grow their footprint in society, we will continually lose the contract of trust between humans and digital truth. We've seen this with misinformation, and countermeasures have been based in both technical development and policy. But the leaps in scale that I'm seeing of information corruptibility, combined with networked deployments of intelligent sensing systems, make me reluctant to say that we will be able to naturally pace this <a id="ref-12" href="#note-12" style="scroll-margin-top: 6rem;">[12]</a>. And this brings me to the second question:
+I'll be real - I've long thought that as LLMs grow their footprint in society, we will continually lose the contract of trust between humans and digital truth. We've seen this with misinformation, and countermeasures have been based in both technical development and policy. But the leaps in scale that I'm seeing of information corruptibility, combined with networked deployments of intelligent sensing systems, make me reluctant to say that we will be able to naturally pace this <a id="ref-13" href="#note-13" style="scroll-margin-top: 6rem;">[13]</a>. And this brings me to the second question:
 
 > *should* we care? will solving encompassing/adjacent problems suffice?
 
-I'm just gonna say it - the safeguards that we normally envision for frontier lab LLMs don't generalize to the risks posed by ubiquitous machine perception <a id="ref-13" href="#note-13" style="scroll-margin-top: 6rem;">[13]</a>. Imagine we've solved AI alignment - our AIs don't hallucinate, they follow the operator's instructions, and they don't get hacked. How do we address
+I'm just gonna say it - the safeguards that we normally envision for frontier lab LLMs don't generalize to the risks posed by ubiquitous machine perception <a id="ref-14" href="#note-14" style="scroll-margin-top: 6rem;">[14]</a>. Imagine we've solved AI alignment - our AIs don't hallucinate, they follow the operator's instructions, and they don't get hacked. How do we address
 
 - when a police department uses it to reconstruct everyone at a protest
 - one government collecting data with benevolent privacy practices and other repurposing/misusing it upon transfer
@@ -133,9 +133,11 @@ should i keep going
 <a id="note-11" href="#ref-11" style="scroll-margin-top: 6rem;">[11]</a> Another framing of this question is whether solving broader or adjacent problems like AI control/alignment will automatically materialize the best outcomes of surveillance tech.
 
 
-<a id="note-12" href="#ref-12" style="scroll-margin-top: 6rem;">[12]</a> wording chosen intentionally, @Dario please pace my frontier :pray:
+<a id="note-12" href="#ref-12" style="scroll-margin-top: 6rem;">[12]</a>  [Spherical harmonics](https://irhum.github.io/blog/spherical-harmonics/) are cool as hell, for other math chuds out there
+
+<a id="note-13" href="#ref-13" style="scroll-margin-top: 6rem;">[13]</a> wording chosen intentionally, @Dario please pace my frontier :pray:
 
 
-<a id="note-13" href="#ref-13" style="scroll-margin-top: 6rem;">[13]</a> Alignment going well is a very optimistic view imo. With the recent [OpenAI/HuggingFace breach](https://www.dwarkesh.com/p/openai-huggingface), I can't help but fear-monger that even if these companies try and follow through on what they're promising, the existence of this tech opens the possibility for unforeseen attacks paths with an unprecedented capability of hacking and social engineering.
+<a id="note-14" href="#ref-14" style="scroll-margin-top: 6rem;">[14]</a> Alignment going well is a very optimistic view imo. With the recent [OpenAI/HuggingFace breach](https://www.dwarkesh.com/p/openai-huggingface), I can't help but fear-monger that even if these companies try and follow through on what they're promising, the existence of this tech opens the possibility for unforeseen attacks paths with an unprecedented capability of hacking and social engineering.
 
 </section>
