@@ -5,6 +5,13 @@ date: 2026-09-20 00:00:00-0700
 related_posts: false
 ---
 
+<style>
+.neural-rendering-figure { width: 50%; margin: 1.75rem auto; }
+.neural-rendering-figure:last-of-type { width: 348.5px; max-width: 50%; }
+.neural-rendering-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 14px; box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12); }
+.neural-rendering-figure .caption { margin-top: 0.65rem; padding: 0; text-align: center; font-size: 0.85rem; line-height: 1.5; }
+</style>
+
 I used to think surveillance is deeply unpopular, but after moving to Silicon Valley, I was surprised by the tone with which my left-leaning peers viewed the issue (*hint* - but how will we catch the bad guys??). On the other hand, my even-lefter-leaning peers have been calling out the privacy risks associated with the deployment of self-driving cars, which I also would not have foreseen.
 
 I guess sometimes it takes a bout of shower thoughts or an introspective time on the toilet to connect the dots <a id="ref-1" href="#note-1" style="scroll-margin-top: 6rem;">[1]</a>, so here I've gathered my opinions on the current state of surveillance technology. In doing so, I'm considerably more concerned than prior to writing this essay, and I feel that we are in more desperate need of robust AI policy than ever.
@@ -35,19 +42,23 @@ Previously, a method called NeRFs were state-of-the-art for 3D reconstruction, b
 
 So we could ask the question, given our 3D position *xyz* and our viewing angle ($$\phi, \theta$$), what RGB color and opacity $$\sigma$$ would we see? 
 
-{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-1.png" class="img-fluid rounded" %}
+<div class="neural-rendering-figure">
+{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-1.png" class="img-fluid" %}
+</div>
 
 This involved querying the neural net many times along the ray and accumulating color until it saturated, which was very computationally expensive and time-consuming for a single scene. Imagine training this - you'd have to collect enough training data to generalize to multiple viewing directions for every point in 3D space.
 
 But then 3D Gaussian Splatting came to be; instead of trying to capture data for every viewing pose, we just needed to develop 3D representations for all the objects in the scene. If we know where's a tree in the scene and we've seen it from a couple spots, then model the tree with some building blocks (in this case, 3D Gaussians), and then project that onto your canvas ("splatting", or projecting, the 3D Gaussians onto your 2D camera space).
 
-{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-2.png" class="img-fluid rounded" %}
-*we're basically modeling the scene as a jar of jelly beans ngl*
+<div class="neural-rendering-figure">
+{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-2.png" class="img-fluid" caption="<em>we're basically modeling the scene as a jar of jelly beans ngl</em>" %}
+</div>
 
 Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matrix R, a scaling along each axis $$s_x, s_y, s_z$$ , and spherical harmonics [] which encode how the color changes with respect to viewing direction. Although 3DGS has to store a bunch of information for each building block in the scene, actually projecting this from 3D to 2D is a very quick process with some GPU chicanery, which sped up 3D reconstruction to unprecedented levels.
 
-{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-3.png" class="img-fluid rounded" %}
-*Data from the linked original 3DGS paper*
+<div class="neural-rendering-figure">
+{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-3.png" class="img-fluid" caption="<em>Data from the linked original 3DGS paper</em>" %}
+</div>
 
 6 minutes! versus 48 hours for Mip-NeRF! And we're not even done yet. There were some important updates that continued to speed this up and improve accuracy and generalization:
 
@@ -61,8 +72,10 @@ And finally, in the past couple months, feedforward methods have made 3D reconst
 
 With foundation models, scaling laws govern. Those who hold massive data and compute - frontier labs - have already instated their control over 3D reconstruction, and nobody is talking about it yet. 
 
-{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-4.png" class="img-fluid rounded" width="697" %}
-From [VGGT-$$\Omega$$ paper,](https://vggt-omega.github.io/) a clear correlation between model size and model performance
+{% capture neural_rendering_caption %}From <a href="https://vggt-omega.github.io/">VGGT-\(\Omega\) paper,</a> a clear correlation between model size and model performance{% endcapture %}
+<div class="neural-rendering-figure">
+{% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-4.png" class="img-fluid" caption=neural_rendering_caption %}
+</div>
 
 I'll be real - I've long thought that as LLMs grow their footprint in society, we will continually lose the contract of trust between humans and digital truth. We've seen this with misinformation, and countermeasures have been based in both technical development and policy. But the leaps in scale that I'm seeing of information corruptibility, combined with networked deployments of intelligent sensing systems, make me reluctant to say that we will be able to naturally pace this <a id="ref-12" href="#note-12" style="scroll-margin-top: 6rem;">[12]</a>. And this brings me to the second question:
 
