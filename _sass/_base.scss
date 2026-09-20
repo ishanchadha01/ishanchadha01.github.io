@@ -1304,3 +1304,36 @@ ninja-keys::part(ninja-input-wrapper) {
   background-color: var(--global-theme-color);
   color: var(--global-text-color);
 }
+
+// Shared article figures and reference section.
+.blog-figure {
+  width: 50%;
+  margin: 1.75rem auto;
+  &.blog-figure-compact { width: 348.5px; max-width: 50%; }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 14px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+  }
+  .caption {
+    margin-top: 0.65rem;
+    padding: 0;
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+.blog-footnotes {
+  margin-top: 3rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 14px;
+  background: var(--global-card-bg-color);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  h2 { margin: 0 0 1.25rem; font-size: 1.2rem; }
+  > :last-child { margin-bottom: 0; }
+}

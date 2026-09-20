@@ -5,13 +5,6 @@ date: 2026-09-20 00:00:00-0700
 related_posts: false
 ---
 
-<style>
-.neural-rendering-figure { width: 50%; margin: 1.75rem auto; }
-.neural-rendering-figure:last-of-type { width: 348.5px; max-width: 50%; }
-.neural-rendering-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 14px; box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12); }
-.neural-rendering-figure .caption { margin-top: 0.65rem; padding: 0; text-align: center; font-size: 0.85rem; line-height: 1.5; }
-</style>
-
 I used to think surveillance is deeply unpopular, but after moving to Silicon Valley, I was surprised by the tone with which my left-leaning peers viewed the issue (*hint* - but how will we catch the bad guys??). On the other hand, my even-lefter-leaning peers have been calling out the privacy risks associated with the deployment of self-driving cars, which I also would not have foreseen.
 
 I guess sometimes it takes a bout of shower thoughts or an introspective time on the toilet to connect the dots <a id="ref-1" href="#note-1" style="scroll-margin-top: 6rem;">[1]</a>, so here I've gathered my opinions on the current state of surveillance technology. In doing so, I'm considerably more concerned than prior to writing this essay, and I feel that we are in more desperate need of robust AI policy than ever.
@@ -42,7 +35,7 @@ Previously, a method called NeRFs were state-of-the-art for 3D reconstruction, b
 
 So we could ask the question, given our 3D position *xyz* and our viewing angle ($$\phi, \theta$$), what RGB color and opacity $$\sigma$$ would we see? 
 
-<div class="neural-rendering-figure">
+<div class="blog-figure">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-1.png" class="img-fluid" %}
 </div>
 
@@ -50,13 +43,13 @@ This involved querying the neural net many times along the ray and accumulating 
 
 But then 3D Gaussian Splatting came to be; instead of trying to capture data for every viewing pose, we just needed to develop 3D representations for all the objects in the scene. If we know where's a tree in the scene and we've seen it from a couple spots, then model the tree with some building blocks (in this case, 3D Gaussians), and then project that onto your canvas ("splatting", or projecting, the 3D Gaussians onto your 2D camera space).
 
-<div class="neural-rendering-figure">
+<div class="blog-figure">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-2.png" class="img-fluid" caption="<em>we're basically modeling the scene as a jar of jelly beans ngl</em>" %}
 </div>
 
 Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matrix R, a scaling along each axis $$s_x, s_y, s_z$$ , and spherical harmonics [] which encode how the color changes with respect to viewing direction. Although 3DGS has to store a bunch of information for each building block in the scene, actually projecting this from 3D to 2D is a very quick process with some GPU chicanery, which sped up 3D reconstruction to unprecedented levels.
 
-<div class="neural-rendering-figure">
+<div class="blog-figure">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-3.png" class="img-fluid" caption="<em>Data from the linked original 3DGS paper</em>" %}
 </div>
 
@@ -73,7 +66,7 @@ And finally, in the past couple months, feedforward methods have made 3D reconst
 With foundation models, scaling laws govern. Those who hold massive data and compute - frontier labs - have already instated their control over 3D reconstruction, and nobody is talking about it yet. 
 
 {% capture neural_rendering_caption %}From <a href="https://vggt-omega.github.io/">VGGT-\(\Omega\) paper,</a> a clear correlation between model size and model performance{% endcapture %}
-<div class="neural-rendering-figure">
+<div class="blog-figure blog-figure-compact">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-4.png" class="img-fluid" caption=neural_rendering_caption %}
 </div>
 
@@ -88,6 +81,10 @@ I'm just gonna say it - the safeguards that we normally envision for frontier la
 - a truthful model creating a misleading narrative based on how the operator prompts it
 
 Somehow, the properties of truthfulness, interpretability, and adherence to operator beliefs in this scenario become a weapon? Historically, the narratives painted by surveillance were not always incorrect; sometimes they were often real observations, which were interpreted and characterized in a specific, scathing way. Ruth Hubbard said it best - "Truth is in the eye of the beholder." - Ruth Hubbard, *Science, Facts, and Feminism*, 1988.
+
+<section class="blog-footnotes" markdown="1" aria-labelledby="footnotes-heading">
+
+<h2 id="footnotes-heading">Notes &amp; references</h2>
 
 <a id="note-1" href="#ref-1" style="scroll-margin-top: 6rem;">[1]</a> why not both simultaneously? Personally i'm a waffle stomper
 
@@ -141,3 +138,4 @@ should i keep going
 
 <a id="note-13" href="#ref-13" style="scroll-margin-top: 6rem;">[13]</a> Alignment going well is a very optimistic view imo. With the recent [OpenAI/HuggingFace breach](https://www.dwarkesh.com/p/openai-huggingface), I can't help but fear-monger that even if these companies try and follow through on what they're promising, the existence of this tech opens the possibility for unforeseen attacks paths with an unprecedented capability of hacking and social engineering.
 
+</section>
