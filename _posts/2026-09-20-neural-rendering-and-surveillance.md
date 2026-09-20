@@ -75,7 +75,7 @@ Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matr
 
 ## scaling laws = we lose control
 
-And finally, in the past couple months, feedforward methods have made 3D reconstruction lightning fast:
+In the past couple months, feedforward methods have made 3D reconstruction lightning fast:
 
 ***feedforward*** - We're now in a regime where we don't need per-scene optimization at all. This is what it sounds like - large vision models (same building blocks as LLMs for the most part) learn a general reconstruction function on millions of views instead of learning per-scene geometry that was required with NeRF and 3DGS training schemes.
 
