@@ -49,7 +49,7 @@ So we could ask the question, given our 3D position *xyz* and our viewing angle 
 
 This involved querying the neural net many times along the ray and accumulating color until it saturated, which was very computationally expensive and time-consuming for a single scene. Imagine training this - you'd have to collect enough training data to generalize to multiple viewing directions for every point in 3D space.
 
-But then 3D Gaussian Splatting came to be; instead of trying to capture data for every viewing pose, we just needed to develop 3D representations for all the objects in the scene. If we know where a tree exists in the scene and we've seen it from a couple spots, the we should model the tree with our building blocks (in this case, 3D Gaussians), and then project that onto your canvas ("splatting", or projecting, the 3D Gaussians onto your 2D camera space).
+But then 3D Gaussian Splatting came to be; instead of trying to capture data for every viewing pose, we just needed to develop 3D representations for all the objects in the scene. If we know where a tree exists in the scene and we've seen it from a couple spots, then we should model the tree with our building blocks (in this case, 3D Gaussians), and then project that onto your canvas ("splatting", or projecting, the 3D Gaussians onto your 2D camera space).
 
 <div class="blog-figure">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-2.png" class="img-fluid" caption="<em>we're basically modeling the scene as a jar of jelly beans ngl</em>" %}
