@@ -33,9 +33,9 @@ There are two fairly important questions that I haven't answered:
 
 > why does reconstruction enabled tech matter here?
 
-Heads up, I'm going to get pretty technical in this explanation. My claim here is essentially that surveillance is transforming from recording observations to vast, networked, intelligent devices creating manipulable models of the world, and only tech giants will have access to this moving forward.
+Heads up, I'm going to get pretty technical in this explanation. My claim here is essentially 3D reconstruction used to be pretty slow and expensive (NeRFs), became fast and accessible (3DGS), but is once again inaccessible due to training dynamics.
 
-In 2023, I was halfway through my Master's thesis on 3D reconstruction in medical settings, and a single paper completely changed its course: [3D Gaussian Splatting for Real-Time Radiance Field Rendering](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/). This paper enabled *significantly* faster and more accurate 3D reconstruction, but for large scenes with many dynamic actors, the process remained slow for high fidelity reconstructions. Regardless, numerous companies and products spun out of this, such as World Labs and Google Deepmind's Genie 3.
+In 2023, I was halfway through my Master's thesis on 3D reconstruction in medical settings, and a single paper completely changed its course: [3D Gaussian Splatting for Real-Time Radiance Field Rendering](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/). This paper enabled *significantly* faster and more accurate 3D reconstruction, but for large scenes with many dynamic actors, but high fidelity reconstructions of large scenes with many dynamic components remained slow. Regardless, numerous companies and products spun out of this, such as World Labs and Google Deepmind's Genie 3.
 
 Previously, a method called NeRF was state-of-the-art for 3D reconstruction, but they involved training a humongous neural net:
 
@@ -49,13 +49,13 @@ So we could ask the question, given our 3D position *xyz* and our viewing angle 
 
 This involved querying the neural net many times along the ray and accumulating color until it saturated, which was very computationally expensive and time-consuming for a single scene. Imagine training this - you'd have to collect enough training data to generalize to multiple viewing directions for every point in 3D space.
 
-But then 3D Gaussian Splatting came to be; instead of trying to capture data for every viewing pose, we just needed to develop 3D representations for all the objects in the scene. If we know where a tree exists in the scene and we've seen it from a couple spots, then we should model the tree with our building blocks (in this case, 3D Gaussians), and then project that onto your canvas ("splatting", or projecting, the 3D Gaussians onto your 2D camera space).
+But then 3D Gaussian Splatting came to be; instead of trying to capture data for every viewing pose, we just needed to develop 3D representations for the objects in the scene. If we know where a tree exists in the scene and we've seen it from a couple spots, the we could model the tree with our building blocks (in this case, 3D Gaussians), and then project that onto your canvas (2D camera space).
 
 <div class="blog-figure">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-2.png" class="img-fluid" caption="<em>we're basically modeling the scene as a jar of jelly beans ngl</em>" %}
 </div>
 
-Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matrix R, a scaling along each axis $$s_x, s_y, s_z$$ , and spherical harmonics <a id="ref-12" href="#note-12" style="scroll-margin-top: 6rem;">[12]</a> which encode how the color changes with respect to viewing direction. Although 3DGS has to store a bunch of information for each building block in the scene, actually projecting this from 3D to 2D is a very quick process with some GPU chicanery, which sped up 3D reconstruction to unprecedented levels.
+Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matrix R, a scaling along each axis $$s_x, s_y, s_z$$ , and spherical harmonics <a id="ref-12" href="#note-12" style="scroll-margin-top: 6rem;">[12]</a> which encode how the color changes with respect to viewing direction. Although 3DGS has to store a bunch of information for each building block in the scene, actually projecting this from 3D to 2D is a very quick process with some GPU chicanery.
 
 <div class="blog-figure">
 {% include figure.liquid path="assets/img/neural-rendering-and-surveillance/figure-3.png" class="img-fluid" caption="<em>Data from the linked original 3DGS paper</em>" %}
