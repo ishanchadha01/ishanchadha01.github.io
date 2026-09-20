@@ -1337,3 +1337,16 @@ ninja-keys::part(ninja-input-wrapper) {
   h2 { margin: 0 0 1.25rem; font-size: 1.2rem; }
   > :last-child { margin-bottom: 0; }
 }
+
+.technical-details {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 14px;
+  summary {
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--global-theme-color);
+  }
+  &[open] > summary { margin-bottom: 1.25rem; }
+}

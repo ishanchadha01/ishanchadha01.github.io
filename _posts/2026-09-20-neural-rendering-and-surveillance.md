@@ -35,6 +35,9 @@ There are two fairly important questions that I haven't answered:
 
 Heads up, I'm going to get pretty technical in this explanation. My claim here is essentially 3D reconstruction used to be pretty slow and expensive (NeRFs), became fast and accessible (3DGS), but is once again inaccessible due to training dynamics.
 
+<details class="technical-details" markdown="1">
+<summary>Technical details: NeRFs and 3D Gaussian Splatting</summary>
+
 In 2023, I was halfway through my Master's thesis on 3D reconstruction in medical settings, and a single paper completely changed its course: [3D Gaussian Splatting for Real-Time Radiance Field Rendering](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/). This paper enabled *significantly* faster and more accurate 3D reconstruction, but for large scenes with many dynamic actors, but high fidelity reconstructions of large scenes with many dynamic components remained slow. Regardless, numerous companies and products spun out of this, such as World Labs and Google Deepmind's Genie 3.
 
 Previously, a method called NeRF was state-of-the-art for 3D reconstruction, but they involved training a humongous neural net:
@@ -66,6 +69,8 @@ Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matr
 [**3DGUT**](https://arxiv.org/abs/2412.12507) - The process of "3D Gaussians" -> "project to 2D ellipses" -> "determine footprint on pixels" is known as Elliptical Weighted Averaging and requires computing the Jacobian of a nonlinear projection, resulting in approximation errors for very long/narrow or subpixel Gaussians, especially for non-pinhole camera models, so 3DGUT uses unscented transforms (same sampling method as Unscented Kalman Filters) to estimate this nonlinear transform with only 7 points. One consequential outcome of this was the ability to model secondary rays, which means we could now model the physical properties of an object in the scene as well (think "secondary ray" = "the ray after light bounces off the object").
 
 [**MCMC**](https://arxiv.org/abs/2404.09591) - Gaussians are modeled as a random sample drawn from the scene's underlying "probability distribution", which gets rid of the carefully engineered Gaussian pruning/splitting that needed to occur to move Gaussians around in the scene when areas were too sparsely/densely modeled.
+
+</details>
 
 ## scaling laws = we lose control
 
