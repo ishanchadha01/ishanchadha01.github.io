@@ -97,7 +97,6 @@ I could go on
 <a id="note-5" href="#ref-5" style="scroll-margin-top: 6rem;">[5]</a>  [article](https://www.theverge.com/transportation/996863/robotaxi-waymo-police-privacy-surveillance) , also idk how people get it goin in one of these but [article](https://sfstandard.com/2023/08/11/san-francisco-robotaxi-cruise-debauchery/)
 
 
-<a href="#ref-5" style="scroll-margin-top: 6rem;">[5]</a>  [insert article about sex in waymos] 
 
 
 <a id="note-6" href="#ref-6" style="scroll-margin-top: 6rem;">[6]</a> 
