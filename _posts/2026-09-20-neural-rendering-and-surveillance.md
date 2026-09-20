@@ -3,13 +3,19 @@ layout: post
 title: Neural Rendering and Surveillance
 date: 2026-09-20 00:00:00-0700
 related_posts: false
+toc:
+  sidebar: left
 ---
+
+## surveillance rn
 
 I used to think surveillance is deeply unpopular, but after moving to Silicon Valley, I was surprised by the tone with which my left-leaning peers viewed the issue (*hint* - but how will we catch the bad guys??). On the other hand, my even-lefter-leaning peers have been calling out the privacy risks associated with the deployment of self-driving cars, which I also would not have foreseen.
 
 I guess sometimes it takes a bout of shower thoughts or an introspective time on the toilet to connect the dots <a id="ref-1" href="#note-1" style="scroll-margin-top: 6rem;">[1]</a>, so here I've gathered my opinions on the current state of surveillance technology. In doing so, I'm considerably more concerned than prior to writing this essay, and I feel that we are in more desperate need of robust AI policy than ever.
 
 Broadly, surveillance technology has always bothered me because of how it's historically been employed to paint a narrative against groups that I care about <a id="ref-2" href="#note-2" style="scroll-margin-top: 6rem;">[2]</a>. Since 2021, the conversation has shifted though - we're not talking about Cambridge Analytica and Russian operations influencing US elections, nor are we talking about the policing of Black neighborhoods in the context of BLM. Several of us now see the issue via the lens of immigrant distrust, and for some silly reason, others are misled by the seemingly democratic nature of both the US government and technology... so let's look at the state of the tech today.
+
+## perv glasses, robotaxis, and the wrong hands
 
 Let's start with the perv glasses! Many have purchased Meta's Ray Bans, which have the diddy camera <a id="ref-3" href="#note-3" style="scroll-margin-top: 6rem;">[3]</a> hidden next to the lens, and amongst some, this has deemed them "perv glasses" <a id="ref-4" href="#note-4" style="scroll-margin-top: 6rem;">[4]</a> -- rightfully so, since it's easier to record people in a hidden manner than ever before.  
 
@@ -22,6 +28,8 @@ But then there's the tier above that - that's right, I'm talking Palantir and Fl
 There are two fairly important questions that I haven't answered:
 - We've talked about the state of modern surveillance, but why does 3D reconstruction enabled tech matter here?
 - Surveillance tech is already ubiquitous, the dynamics point towards up-scaling, and the first-order benefits seem reasonable (less crime, better truth-seeking, AI that can reason about the physical world), so *should* we care? <a id="ref-11" href="#note-11" style="scroll-margin-top: 6rem;">[11]</a>
+
+## how we used to build worlds
 
 > why does reconstruction enabled tech matter here?
 
@@ -59,6 +67,8 @@ Each Gaussian in 3DGS is represented by an *xyz* point in space, a rotation matr
 
 [**MCMC**](https://arxiv.org/abs/2404.09591) - Gaussians are modeled as a random sample drawn from the scene's underlying "probability distribution", which gets rid of the carefully engineered Gaussian pruning/splitting that needed to occur to move Gaussians around in the scene when areas were too sparsely/densely modeled.
 
+## scaling laws = we lose control
+
 And finally, in the past couple months, feedforward methods have made 3D reconstruction lightning fast
 
 ***feedforward*** - We're now in the realm that we don't need scene optimization at all. This is what it sounds like - large vision models (same building blocks as LLMs for the most part) learn a general reconstruction function on millions of views instead of learning per-scene geometry that was required with NeRF and 3DGS training schemes.
@@ -71,6 +81,8 @@ With foundation models, scaling laws govern. Those who hold massive data and com
 </div>
 
 I'll be real - I've long thought that as LLMs grow their footprint in society, we will continually lose the contract of trust between humans and digital truth. We've seen this with misinformation, and countermeasures have been based in both technical development and policy. But the leaps in scale that I'm seeing of information corruptibility, combined with networked deployments of intelligent sensing systems, make me reluctant to say that we will be able to naturally pace this <a id="ref-13" href="#note-13" style="scroll-margin-top: 6rem;">[13]</a>. And this brings me to the second question:
+
+## alignment won't save us
 
 > *should* we care? will solving encompassing/adjacent problems suffice?
 
