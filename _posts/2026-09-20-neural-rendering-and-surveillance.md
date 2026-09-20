@@ -92,7 +92,7 @@ I'm just gonna say it - the safeguards that we normally envision for frontier la
 - one government collecting data with benevolent privacy practices and other repurposing/misusing it upon transfer
 - a truthful model creating a misleading narrative based on how the operator prompts it
 
-Somehow, the properties of truthfulness, interpretability, and adherence to operator beliefs in this scenario become a weapon? Historically, the narratives painted by surveillance were not always incorrect; sometimes they were often real observations, which were interpreted and characterized in a specific, scathing way. Ruth Hubbard said it best - "Truth is in the eye of the beholder." - Ruth Hubbard, *Science, Facts, and Feminism*, 1988.
+Somehow, the properties of truthfulness, interpretability, and adherence to operator beliefs in this scenario become a weapon? Historically, the narratives painted by surveillance were not always incorrect; they were often real observations, which were interpreted and characterized in a specific, scathing way. Ruth Hubbard said it best - "Truth is in the eye of the beholder." - Ruth Hubbard, *Science, Facts, and Feminism*, 1988.
 
 <section class="blog-footnotes" markdown="1" aria-labelledby="footnotes-heading">
 
