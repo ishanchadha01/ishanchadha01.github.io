@@ -3363,6 +3363,3 @@ table.table-sm td {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
 }
-.table-responsive > .table-bordered {
-  border-top: 1px solid #dee2e6;
-}
