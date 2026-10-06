@@ -512,11 +512,25 @@ pre code {
 .table-sm th {
   padding: 0.3rem;
 }
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6;
+}
+.table-bordered thead td,
+.table-bordered thead th {
+  border-bottom-width: 2px;
+}
 .table-borderless tbody + tbody,
 .table-borderless td,
 .table-borderless th,
 .table-borderless thead th {
   border: 0;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 .table-hover tbody tr:hover {
   color: #212529;
@@ -549,6 +563,12 @@ pre code {
 .table-dark thead th {
   border-color: #454d55;
 }
+.table-dark.table-bordered {
+  border: 0;
+}
+.table-dark.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
 .table-dark.table-hover tbody tr:hover {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.075);
@@ -558,6 +578,9 @@ pre code {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+.table-responsive > .table-bordered {
+  border: 0;
 }
 .btn {
   display: inline-block;
@@ -1659,8 +1682,13 @@ a.close.disabled {
 .mt-3 {
   margin-top: 1rem !important;
 }
-.mt-5 {
+.mt-5,
+.my-5 {
   margin-top: 3rem !important;
+}
+
+.my-5 {
+  margin-bottom: 3rem !important;
 }
 .p-0 {
   padding: 0 !important;
@@ -1741,6 +1769,10 @@ a.close.disabled {
   .table td,
   .table th {
     background-color: #fff !important;
+  }
+  .table-bordered td,
+  .table-bordered th {
+    border: 1px solid #dee2e6 !important;
   }
   .table-dark {
     color: inherit;
