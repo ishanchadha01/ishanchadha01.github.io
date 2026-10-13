@@ -29,7 +29,13 @@ and YLD = (years of life disabled) $$\times$$ (disability weight)
 
 Kind of makes sense, but again, this is a simple example. A recent scheme that I've come across is closer to assigning a "moral weight", computing welfare rather than health:
 
-$$V(I) = \sum_{j}E[\Delta O_j \mid I]w_j$$
+<div class="blog-equation" markdown="1">
+
+$$
+V(I) = \sum_{j}E[\Delta O_j \mid I]w_j
+$$
+
+</div>
 
 where the value $$V$$ of the intervention $$I$$ is computed by examining all outcomes $$j$$. Note the two components - $$E[\Delta O_j \mid I]$$ is what the outcome caused, while $$w_j$$ is how we morally weight it.
 
@@ -58,15 +64,25 @@ So let's play the EA game - let's value how "good" [allocating resources towards
 {: .mt-5}
 
 The question I'm truly answering here is: How much "welfare" does &#36;1 million of investment towards the chosen intervention produce, where the intervention is worker organization. I want to model the difference of welfare between whether the intervention happened or not:
+<div class="blog-equation" markdown="1">
+
 $$
 V = \mathbb E[\sum^{T}_{t=0}\frac{ W_t(\text{additional funding})-W_t(\text{no additional funding}) }{(1+r)^t}]
 $$
+
+</div>
+
 I've added an annual discount rate $$r$$ too (thanks high school Econ).
 
 For worker organization, I want to separate compensation gains from changes in political power:
+<div class="blog-equation" markdown="1">
+
 $$
 V_{\mathrm{organizing}} = \underbrace{\mathbb E[N_{\mathrm{additional}}\;L\;\Delta u]}_{\text{direct welfare}} + \underbrace{\sum_s \left[P_s(\text{grant})-P_s(\text{no grant})\right]B_s}_{\text{political welfare}}
 $$
+
+</div>
+
 For the direct welfare term:
 - $$N_{\mathrm{additional}}$$ are the new workers because of the grant
 - $$L$$ is the effective number of years of the benefit
@@ -76,68 +92,138 @@ For the political term:
 - $$B_s$$ is the welfare from the new trajectory
 
 Here was how I computed each term:
+<div class="blog-equation" markdown="1">
+
 $$
 N_{\mathrm{additional}}=\frac{aG}{\tau c} \quad\Longrightarrow\quad V_{\mathrm{direct}} = \mathbb E\!\left[ \frac{aG}{\tau c}\,L\,\Delta u \right]
 $$
+
+</div>
+
 Here, $$G$$ is the grant, $$a$$ is the fraction that makes it to actual organizing expenditure, $$c$$ is the cost per additional member, and $$\tau$$ is an adjustment of the cost to the recipient's circumstances. Voos estimated costs equating to around &#36;2,208-&#36;5,969 in 2024 dollars, which means that &#36;1 million would support 168-453 members at those historical productivities <a id="ref-11b" href="#note-11" style="scroll-margin-top: 6rem;">[11]</a>, <a id="ref-12a" href="#note-12" style="scroll-margin-top: 6rem;">[12]</a>.
 
 Since $$L$$ is how long the welfare applies for, I made it include the discounting:
+<div class="blog-equation" markdown="1">
+
 $$
 L = \sum_{t=1}^{T} \frac{q_t}{(1+r)^t} \quad\Longrightarrow\quad V_{\mathrm{direct}} = \mathbb E\!\left[ N_{\mathrm{additional}} \sum_{t=1}^{T} \frac{q_t\,\Delta u_t}{(1+r)^t} \right]
 $$
+
+</div>
+
 For the income component, I use log-consumption welfare - a person's annual gain is $$log(c_{\mathrm{after}} / c_{\mathrm{before}})$$, so doubling consumption for one year contributes $$log2=0.693$$ units:
+<div class="blog-equation" markdown="1">
+
 $$
 \Delta u = \log\!\left( \frac{c(\text{grant})}{c(\text{no grant})} \right)
 $$
+
+</div>
+
 The political welfare term is a bit freaky since it also changes with scale, duration, and consequences. Instead of modeling it like:
+<div class="blog-equation" markdown="1">
+
 $$
 \Delta P_s = P_s(\text{grant})-P_s(\text{no grant}) \qquad V_{\mathrm{political}}=\sum_s\Delta P_s B_s
 $$
+
+</div>
+
 I actually modeled variable intra-trajectory welfare too:
+<div class="blog-equation" markdown="1">
+
 $$
 V_{\mathrm{political}} = \sum_s \left[ P_s(\text{grant})B_s(\text{grant}) - P_s(\text{no grant})B_s(\text{no grant}) \right]
 $$
+
+</div>
+
 This just leaves the $$N_{\mathrm{additional}}\rightarrow\Delta P_s$$ relationship - how does membership affect the probability of a consequential political trajectory? New workers aren't just units that build up toward a political outcome, and theres lots of intermediate effects that are difficult to account for. Take, for example, whether the organization does coalition building and the political stances of the collaborating orgs. For this reason, I created an intermediate variable $$C$$ to represent organization capacity. Essentially, I'm trying to separate how much capacity a grant creates and how capacity impacts political outcomes:
+<div class="blog-equation" markdown="1">
+
 $$
 G \longrightarrow N_{\mathrm{additional}} \longrightarrow C \longrightarrow P_s
 $$
+
+</div>
+
 One way to express this is:
+<div class="blog-equation" markdown="1">
+
 $$
 P_s(G) = \int \underbrace{P(s\mid C=c,X)}_{\text{political outcome given capacity}} \qquad \underbrace{f(c\mid G,X)}_{\text{capacity created under funding}} \,dc
 $$
+
+</div>
+
 where $$X$$ describes the political and economic context. For the $$C\rightarrow P$$ relationship, or the question of political outcomes given membership, there is actually some data - based on a reanalysis. I did of some international campaign data, national union participation was correlated with a 34.8 percentage points higher probability of democracy 5 years later <a id="ref-12b" href="#note-12" style="scroll-margin-top: 6rem;">[12]</a>:
+<div class="blog-equation" markdown="1">
+
 $$
 \widehat{\theta}_{\mathrm{association}}=0.348, \qquad 95\%\text{ confidence interval}=[0.117,\;0.559]
 $$
+
+</div>
+
 To connect this with funding, let's use a narrower model where the grant only changes whether national unions participate in a consequential campaign. Let $$q$$ be the probability that this campaign happens, and $$\delta_U(G)$$ be the grand-induced increased probability of national union participation. Then:
+<div class="blog-equation" markdown="1">
+
 $$
 \Delta P_{\mathrm{democracy}} = q\,\delta_U(G)\,\theta_{\mathrm{target}}
 $$
+
+</div>
+
 Note, $$\theta_{\mathrm{target}}$$ is the actual causal association, and $$\widehat{\theta}_{\mathrm{association}}$$ is just our benchmark of it based on the historical data.
 
 The intermediate organization capacity model makes the remaining funding relationship explicit; if $$h(c, X)$$ is the probability of national union participation given capacity $$c$$ and context $$X$$, then:
+<div class="blog-equation" markdown="1">
+
 $$
 \delta_U(G) = \int h(c,X) \left[f(c\mid G,X)-f(c\mid0,X)\right]dc
 $$
+
+</div>
+
 For the outcome's value, I used Acemoglu and colleagues' estimated democratization-GDP trajectory, where the data in question implies a 25 year log GDP effect of ~0.169 with standard error 0.0530 <a id="ref-13" href="#note-13" style="scroll-margin-top: 6rem;">[13]</a>. Summing reconstructed annual trajectory over 25 years at a 3% discount rate gives:
+<div class="blog-equation" markdown="1">
+
 $$
 K=\sum_{t=1}^{25}\frac{\Delta\log Y_t}{1.03^t} \approx1.664
 $$
+
+</div>
+
 So far, the calculation values a political outcome; it doesn't establish how much the grant actually changes its probability. Under the assumption that GDP gains translate proportionally to consumption gains, the restricted democratization channel $$G \longrightarrow N_{\mathrm{additional}} \longrightarrow C \longrightarrow P_s$$ is:
+<div class="blog-equation" markdown="1">
+
 $$
 V_{\mathrm{organizing}}-V_{\mathrm{AI}} \approx D+1.664H\,\Delta P_{\mathrm{democracy}}-A
 $$
+
+</div>
+
 I've added $$A$$, the welfare associated with an AI safety intervention, as an example. $$D$$ is the net direct welfare from the organizing grant and $$H$$ is the total number of people affected by the modeled democratization. So we arrive at:
+<div class="blog-equation" markdown="1">
+
 $$
 \boxed{ \Delta P_{\mathrm{democracy}}^{*} = \frac{A-D}{1.664H} }
 $$
+
+</div>
+
 Or - how much would the organizing grant need to increase the probability of democratization to match the AI safety grant, in terms of welfare? I see two interesting cases here:
 - $$\Delta P^* < 0$$: organizing's direct benefits already exceed AI's estimated value
 - $$0<\Delta P^* < 1-p_0$$: the required probability increase of whether the population transitions to democracy due to the grant is possible mathematically
 For illustration, suppose $$A=20,000$$, $$D=5,000$$, and $$H=1,000,000$$. Then:
+<div class="blog-equation" markdown="1">
+
 $$
 \Delta P_{\mathrm{democracy}}^{*} = \frac{20{,}000-5{,}000}{1.664\times1{,}000{,}000} = 0.009014 \approx \boxed{0.90\text{ percentage points}}
 $$
+
+</div>
+
 So AI Safety starts with a 15,000 welfare point advantage, but the worker organization would move the probability of democratization from 10% to 10.9% here.
 
 ### ineffective altruism
