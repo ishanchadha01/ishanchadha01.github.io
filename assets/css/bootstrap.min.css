@@ -333,6 +333,10 @@ h5 {
 h6 {
   font-size: 1rem;
 }
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
